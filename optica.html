@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Citation: https://www.youtube.com/watch?v=Q2AmBEXhG8U -->
+    <!-- https://fuuno.net/js_sample/forward_reverse/forward_reverse.html -->
+    <!-- https://www.w3schools.com/howto/howto_js_slideshow.asp -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Optica</title>
+    
+    <meta name="description" content="Photography">
+    <meta name="keywords" content="Photography, Photography, Photography">  
+    <meta name="author" content="Takumi Shiraishi">
+    
+    <link rel="icon" type="image/png" href="image/icon.png">
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+    <script src="tourState.js"></script>
+    <script async src="https://unpkg.com/es-module-shims@1.3.6/dist/es-module-shims.js"></script>
+    <script type="importmap">
+
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.159.0/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.159.0/examples/jsm/"
+        }
+    }
+    
+    </script>
+    <script src="index.js" defer></script>
+    <script src="animation.js" defer></script>
+    <script type="module" src="script.js" defer></script>
+</head>
+<body id="opticaBody">
+    <div id="overlay" class="overlay"></div>
+    <div id="before"></div>
+    <div id="scrollPrompt">
+        <div class="visuallyHidden">Keep Scrolling</div>
+        <div class="text" aria-hidden="true">
+            <span class="char" style="--char-index: 0"> K </span>
+            <span class="char" style="--char-index: 1"> e </span>
+            <span class="char" style="--char-index: 2"> e </span>
+            <span class="char" style="--char-index: 3"> p </span>
+            <span class="whitespace">&nbsp;</span>
+
+            <span class="char" style="--char-index: 4"> S </span>
+            <span class="char" style="--char-index: 5"> c </span>
+            <span class="char" style="--char-index: 6"> r </span>
+            <span class="char" style="--char-index: 7"> o </span>
+            <span class="char" style="--char-index: 8"> l </span>
+            <span class="char" style="--char-index: 9"> l </span>
+            <span class="char" style="--char-index: 10"> i </span>
+            <span class="char" style="--char-index: 11"> n </span>
+            <span class="char" style="--char-index: 12"> g </span>
+        </div>
+    </div>
+    <div id="menu">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a onclick="gallery()" class="gallery">Gallery</a></li>
+            <ul id="item">
+                <li><a onclick="nature()">Nature</a></li>
+                <li><a onclick="urban()">Urban</a></li>
+                <li><a onclick="architecture()">Architecture</a></li>
+                <li><a onclick="night()">Night</a></li>
+                <li><a onclick="animals()">Animals</a></li>
+            </ul>
+            <!--<li><a onclick="myGallery()">My Gallery</a></li>-->
+            <!--<li><a onclick="explore()">Explore</a></li>-->
+            <li><a href="info.html">About</a></li>
+            <li><a href="info.html#footer">Contact</a></li>
+            <li><a onclick="loginContainer()">Login / Sign Up</a></li>
+        </ul>
+    </div>
+    <div id="content">
+        <img src="image/welcome_optica.jpg" class="fade-in-image" style="opacity: 0; position: fixed; transform: translate(-50%, -50%);">
+        
+        <button onclick="plusSlides(-1)" class="prev"></button>
+        
+        <div id="infoBox" class="info-box hidden">
+            <p>Camera: XXXX<br>
+            Lens: XXXX<br>
+            Shutter Speed: XXXX<br>
+            Aperture: XXXX<br>
+            ISO: XXXX<br>
+            Focal Length: XXXX<br>
+            Location: XXXX<br>
+            20XX/XX/XX</p>
+        </div>
+    
+        <button id="infoButton" class="invisible-button"></button>
+        <button id="expandButton" class="invisible-button"></button>
+        <button id="btn1" onclick="buttonAudio()" class="invisible-button"></button>
+        <button id="btn2" onclick="buttonAudio()" class="invisible-button"></button>
+        <button id="btn3" onclick="buttonAudio()" class="invisible-button"></button>
+        <button id="btn4" onclick="buttonAudio()" class="invisible-button"></button>
+        <button id="btn5" onclick="buttonAudio()" class="invisible-button"></button>
+        <button id="btn6" onclick="buttonAudio()" class="invisible-button"></button>
+        <button id="btn7" onclick="buttonAudio()" class="invisible-button"></button>
+        <button id="btn8" onclick="buttonAudio()" class="invisible-button"></button>
+        <button id="btn9" onclick="buttonAudio()" class="invisible-button"></button>
+        
+        <div id="slideShow">
+            
+        <!-- Nature -->
+        <div id="natureContainer">
+            
+            <!-- Template
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="mm"
+                    data-aperture="F"
+                    data-shutter=""
+                    data-location=""
+                    
+                    data-date="2024/02/20"
+                    data-iso="100">
+
+                <div class="caption"></div>
+            </div>
+            -->
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/nature/IMG_3600.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="24mm"
+                    data-aperture="F8"
+                    data-shutter="1/250"
+                    data-location="Castaway Cay, The Bahamas"
+                
+                    data-iso="100"
+                    data-date="2025/03/20">
+
+                <div class="caption"></div>
+            </div>
+
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/nature/IMG_3550.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="24mm"
+                    data-aperture="F8"
+                    data-shutter="1/250"
+                    data-location="Nassau, The Bahamas"
+                
+                    data-iso="100"
+                    data-date="2025/03/19">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/nature/nature1.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="24mm"
+                    data-aperture="F11"
+                    data-shutter="1/20"
+                    data-location="Lynn Canyon, North Vancouver"
+                
+                    data-iso="100"
+                    data-date="2025/02/23">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/nature/nature2.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="24mm"
+                    data-aperture="F4"
+                    data-shutter="1/60"
+                    data-location="Lynn Canyon, North Vancouver"
+                
+                    data-iso="400"
+                    data-date="2025/02/23">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/nature/nature3.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="24mm"
+                    data-aperture="F4"
+                    data-shutter="1/60"
+                    data-location="Lynn Canyon, North Vancouver"
+                    
+                    data-iso="320"
+                    data-date="2025/02/23">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/nature/nature4.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="24mm"
+                    data-aperture="F4"                  
+                    data-shutter="1/60"
+                    data-location="Lynn Canyon, North Vancouver"
+                    
+                    data-iso="400"
+                    data-date="2025/02/23">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/nature/nature5.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="94mm"
+                    data-aperture="F7.1"
+                    data-shutter="1/200"
+                    data-location="English Bay, Vancouver"
+                    
+                    data-iso="320"
+                    data-date="2025/02/22">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/nature/nature6.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="105mm"
+                    data-aperture="F7.1"
+                    data-shutter="1/320"
+                    data-location="English Bay, Vancouver"
+                    
+                    data-iso="1000"
+                    data-date="2025/02/22">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/nature/nature7.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="105mm"
+                    data-aperture="F8"
+                    data-shutter="1/250"
+                    data-location="Jericho Beach, Vancouver"
+                    
+                    data-date="2025/01/01"
+                    data-iso="5000">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/nature/nature8.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="24mm"
+                    data-aperture="F4.5"
+                    data-shutter="1/60"
+                    data-location="Jericho Beach, Vancouver"
+                    
+                    data-date="2025/01/01"
+                    data-iso="10000">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/nature/nature9.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="24mm"
+                    data-aperture="F4"
+                    data-shutter="1/30"
+                    data-location="Jericho Beach, Vancouver"
+                    
+                    data-date="2025/01/01"
+                    data-iso="12800">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/nature/nature10.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="24mm"
+                    data-aperture="F4"
+                    data-shutter="1/80"
+                    data-location="English Bay, Vancouver"
+                    
+                    data-date="2024/12/31"
+                    data-iso="125">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/nature/nature11.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="24mm"
+                    data-aperture="F4"
+                    data-shutter="1/60"
+                    data-location="Kitsilano Beach, Vancouver"
+                    
+                    data-date="2024/12/01"
+                    data-iso="160">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/nature/nature12.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="60mm"
+                    data-aperture="F5.6"
+                    data-shutter="1/250"
+                    data-location="Kitsilano Beach, Vancouver"
+                    
+                    data-date="2024/12/01"
+                    data-iso="640">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/nature/nature13.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="24mm"
+                    data-aperture="F4"
+                    data-shutter="1/60"
+                    data-location="Stanley Park, Vancouver"
+                    
+                    data-date="2024/11/18"
+                    data-iso="800">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/nature/nature14.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="102mm"
+                    data-aperture="F7.1"
+                    data-shutter="1/200"
+                    data-location="Deep Cove, North Vancouver"
+                    
+                    data-date="2024/11/11"
+                    data-iso="2000">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/nature/nature15.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="105mm"
+                    data-aperture="F7.1"
+                    data-shutter="1/400"
+                    data-location="Tochigi, Japan"
+                    
+                    data-date="2024/07/18"
+                    data-iso="100">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/nature/nature16.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="24mm"
+                    data-aperture="F4.5"
+                    data-shutter="1/60"
+                    data-location="Fukushima, Japan"
+                    
+                    data-date="2024/07/03"
+                    data-iso="125">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/nature/nature17.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="24mm"
+                    data-aperture="F4"
+                    data-shutter="1/200"
+                    data-location="Fukushima, Japan"
+                    
+                    data-date="2024/07/03"
+                    data-iso="100">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/nature/nature18.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="28mm"
+                    data-aperture="F9"
+                    data-shutter="1/250"
+                    data-location="Kuno Japanese Garden, Steveston"
+                    
+                    data-date="2024/03/26"
+                    data-iso="100">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/nature/nature20.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="60mm"
+                    data-aperture="F7.1"
+                    data-shutter="1/200"
+                    data-location="Kuno Japanese Garden, Steveston"
+                    
+                    data-date="2024/03/26"
+                    data-iso="100">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/nature/nature21.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="60mm"
+                    data-aperture="F10"
+                    data-shutter="1/400"
+                    data-location="Stanley Park, Vancouver"
+                    
+                    data-date="2024/03/16"
+                    data-iso="100">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/nature/nature22.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="105mm"
+                    data-aperture="F9"
+                    data-shutter="1/800"
+                    data-location="Stanley Park, Vancouver"
+                    
+                    data-date="2024/03/16"
+                    data-iso="100">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/nature/nature23.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="24mm"
+                    data-aperture="F4.5"
+                    data-shutter="1/4000"
+                    data-location="Niagara Falls, Ontario"
+                    
+                    data-date="2024/02/25"
+                    data-iso="250">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/nature/nature24.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="44mm"
+                    data-aperture="F9"
+                    data-shutter="1/400"
+                    data-location="Niagara Falls, Ontario"
+                    
+                    data-date="2024/02/25"
+                    data-iso="100">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/nature/nature25.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="24mm"
+                    data-aperture="F16"
+                    data-shutter="1/125"
+                    data-location="Niagara Falls, Ontario"
+                    
+                    data-date="2024/02/25"
+                    data-iso="100">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/nature/nature26.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="24mm"
+                    data-aperture="F5.6"
+                    data-shutter="1/1000"
+                    data-location="Niagara Falls, Ontario"
+                    
+                    data-date="2024/02/25"
+                    data-iso="100">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/nature/nature27.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="38mm"
+                    data-aperture="F5.6"
+                    data-shutter="1/125"
+                    data-location="New Westminster"
+                    
+                    data-date="2023/11/23"
+                    data-iso="100">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/nature/nature28.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="105mm"
+                    data-aperture="F7.1"
+                    data-shutter="1/320"
+                    data-location="Stanley Park, Vancouver"
+                    
+                    data-date="2023/11/14"
+                    data-iso="125">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/nature/nature29.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="105mm"
+                    data-aperture="F10"
+                    data-shutter="1/500"
+                    data-location="English Bay, Vancouver"
+                    
+                    data-date="2023/10/02"
+                    data-iso="100">
+
+                <div class="caption"></div>
+            </div>
+            
+        </div>
+        
+        <!-- Urban -->
+        <div id="urbanContainer">
+
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/urban/IMG_3541.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="105mm"
+                    data-aperture="F9"
+                    data-shutter="1/400"
+                    data-location="Nassau, The Bahamas"
+                    
+                    data-date="2025/03/19"
+                    data-iso="100">
+
+                <div class="caption"></div>
+            </div>
+
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/urban/IMG_3526.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="105mm"
+                    data-aperture="F10"
+                    data-shutter="1/500"
+                    data-location="Nassau, The Bahamas"
+                    
+                    data-date="2025/03/19"
+                    data-iso="100">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/urban/urban1.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="24mm"
+                    data-aperture="F4"
+                    data-shutter="1/500"
+                    data-location="New Westminster"
+                    
+                    data-date="2025/01/29"
+                    data-iso="100">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/urban/urban2.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="52mm"
+                    data-aperture="F11"
+                    data-shutter="1/500"
+                    data-location="Queensbrough"
+                    
+                    data-date="2025/01/29"
+                    data-iso="100">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/urban/urban3.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="88mm"
+                    data-aperture="F9"
+                    data-shutter="1/400"
+                    data-location="New Westminster"
+                    
+                    data-date="2025/01/29"
+                    data-iso="100">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/urban/urban4.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="57mm"
+                    data-aperture="F8"
+                    data-shutter="1/250"
+                    data-location="New Westminster"
+                    
+                    data-date="2025/01/29"
+                    data-iso="100">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/urban/urban5.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="24mm"
+                    data-aperture="F9"
+                    data-shutter="1/320"
+                    data-location="New Westminster"
+                    
+                    data-date="2025/01/29"
+                    data-iso="100">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/urban/urban6.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="105mm"
+                    data-aperture="F7.1"
+                    data-shutter="1/250"
+                    data-location="Stanley Park, Vancouver"
+                    
+                    data-date="2024/11/18"
+                    data-iso="250">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/urban/urban7.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="105mm"
+                    data-aperture="F7.1"
+                    data-shutter="1/250"
+                    data-location="Lansdale Quey, North Vancouver"
+                    
+                    data-date="2024/11/11"
+                    data-iso="200">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/urban/urban8.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="70mm"
+                    data-aperture="F10"
+                    data-shutter="1/400"
+                    data-location="Stanley Park, Vancouver"
+                    
+                    data-date="2024/03/30"
+                    data-iso="100">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/urban/urban9.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="46mm"
+                    data-aperture="F5"
+                    data-shutter="1/100"
+                    data-location="Downtown Vancouver"
+                    
+                    data-date="2024/03/29"
+                    data-iso="200">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/urban/urban10.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="50mm"
+                    data-aperture="F7.1"
+                    data-shutter="1/200"
+                    data-location="Seawall, Vancouver"
+                    
+                    data-date="2024/03/29"
+                    data-iso="100">
+
+                <div class="caption"></div>
+            </div>
+          
+        </div>
+
+        <!-- Architecture -->
+        <div id="architectureContainer">
+
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/architecture/IMG_3650.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="24mm"
+                    data-aperture="F4"
+                    data-shutter="1/500"
+                    data-location="Castaway Cay, The Bahamas"
+                    
+                    data-date="2025/03/20"
+                    data-iso="160">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/architecture/architecture1.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="50mm"
+                    data-aperture="F5"
+                    data-shutter="1/100"
+                    data-location="Stanley Park, Vancouver"
+                    
+                    data-date="2024/11/18"
+                    data-iso="125">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/architecture/architecture2.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="24mm"
+                    data-aperture="F4.5"
+                    data-shutter="1/80"
+                    data-location="Fukushima, Japan"
+                    
+                    data-date="2024/07/04"
+                    data-iso="8000">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/architecture/architecture3.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="105mm"
+                    data-aperture="F8"
+                    data-shutter="1/160"
+                    data-location="Fukushima, Japan"
+                    
+                    data-date="2024/07/03"
+                    data-iso="100">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/architecture/architecture4 2.56.05 PM.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="105mm"
+                    data-aperture="F7.1"
+                    data-shutter="1/160"
+                    data-location="Fukushima, Japan"
+                    
+                    data-date="2024/07/03"
+                    data-iso="160">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/architecture/architecture5.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="105mm"
+                    data-aperture="F7.1"
+                    data-shutter="1/250"
+                    data-location="Seawall, Vancouver"
+                    
+                    data-date="2024/03/16"
+                    data-iso="100">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/architecture/architecture6.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="24mm"
+                    data-aperture="F7.1"
+                    data-shutter="1/200"
+                    data-location="University of Toronto, Ontario"
+                    
+                    data-date="2024/02/22"
+                    data-iso="100">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/architecture/architecture7.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="24mm"
+                    data-aperture="F4.5"
+                    data-shutter="1/60"
+                    data-location="University of Toronto, Ontario"
+                    
+                    data-date="2024/02/22"
+                    data-iso="6400">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/architecture/architecture8.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="24mm"
+                    data-aperture="F7.1"
+                    data-shutter="1/200"
+                    data-location="University of Toronto, Ontario"
+                    
+                    data-date="2024/02/22"
+                    data-iso="100">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/architecture/architecture9.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="50mm"
+                    data-aperture="F5.6"
+                    data-shutter="1/100"
+                    data-location="Science World, Vancouver"
+                    
+                    data-date="2023/10/10"
+                    data-iso="1600">
+
+                <div class="caption"></div>
+            </div>
+          
+        </div>
+        
+        <!-- Night -->
+        <div id="nightContainer">
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/night/night1.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="57mm"
+                    data-aperture="F5.6"
+                    data-shutter="1/60"
+                    data-location="Science World, Vancouver"
+                    
+                    data-date="2025/01/25"
+                    data-iso="1000">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/night/night2.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 16mm F2.8 STM"
+                    data-focal="16mm"
+                    data-aperture="F5"
+                    data-shutter="00:09"
+                    data-location="Tochigi, Japan"
+                    
+                    data-date="2024/08/03"
+                    data-iso="100">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/night/night3.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 16mm F2.8 STM"
+                    data-focal="16mm"
+                    data-aperture="F5"
+                    data-shutter="2.1"
+                    data-location="Tochigi, Japan"
+                    
+                    data-date="2024/08/03"
+                    data-iso="100">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/night/night4.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 16mm F2.8 STM"
+                    data-focal="16mm"
+                    data-aperture="F5.6"
+                    data-shutter="00:08"
+                    data-location="Tochigi, Japan"
+                    
+                    data-date="2024/08/03"
+                    data-iso="100">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/night/night5.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 16mm F2.8 STM"
+                    data-focal="16mm"
+                    data-aperture="F5.6"
+                    data-shutter="2.6"
+                    data-location="Tochigi, Japan"
+                    
+                    data-date="2024/08/03"
+                    data-iso="100">
+
+                <div class="caption"></div>
+            </div>
+          
+        </div>
+        
+        <!-- Animals -->
+        <div id="animalsContainer">
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/animals/animals1.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="92mm"
+                    data-aperture="F7.1"
+                    data-shutter="1/200"
+                    data-location="Hadden Beach, Vancouver"
+                    
+                    data-date="2024/12/01"
+                    data-iso="2500">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/animals/animals2.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="32mm"
+                    data-aperture="F4.5"
+                    data-shutter="1/200"
+                    data-location="Tochigi, Japan"
+                    
+                    data-date="2024/07/30"
+                    data-iso="12800">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/animals/animals3.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="105mm"
+                    data-aperture="F11"
+                    data-shutter="1/200"
+                    data-location="Tochigi, Japan"
+                    
+                    data-date="2024/7/18"
+                    data-iso="800">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/animals/animals4.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="24mm"
+                    data-aperture="F11"
+                    data-shutter="1/80"
+                    data-location="Tochigi, Japan"
+                    
+                    data-date="2024/7/18"
+                    data-iso="800">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/animals/animals5.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="105mm"
+                    data-aperture="F7.1"
+                    data-shutter="1/6"
+                    data-location="Tochigi, Japan"
+                    
+                    data-date="2024/7/18"
+                    data-iso="100">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/animals/animals6.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="105mm"
+                    data-aperture="F7.1"
+                    data-shutter="1/80"
+                    data-location="Tochigi, Japan"
+                    
+                    data-date="2024/7/18"
+                    data-iso="100">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/animals/animals7.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="105mm"
+                    data-aperture="F7.1"
+                    data-shutter="1/6"
+                    data-location="Tochigi, Japan"
+                    
+                    data-date="2024/7/18"
+                    data-iso="100">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/animals/animals8.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="105mm"
+                    data-aperture="F7.1"
+                    data-shutter="1/320"
+                    data-location="Queen Elizabeth Park, Vancouver"
+                    
+                    data-date="2024/03/28"
+                    data-iso="1000">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/animals/animals9.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="105mm"
+                    data-aperture="F7.1"
+                    data-shutter="1/200"
+                    data-location="Queen Elizabeth Park, Vancouver"
+                    
+                    data-date="2024/03/28"
+                    data-iso="12800">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/animals/animals10.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="105mm"
+                    data-aperture="F7.1"
+                    data-shutter="1/250"
+                    data-location="Queen Elizabeth Park, Vancouver"
+                    
+                    data-date="2024/03/28"
+                    data-iso="800">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/animals/animals11.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="105mm"
+                    data-aperture="F7.1"
+                    data-shutter="1/250"
+                    data-location="Queen Elizabeth Park, Vancouver"
+                    
+                    data-date="2024/03/28"
+                    data-iso="5000">
+
+                <div class="caption"></div>
+            </div>
+            
+            <div class="mySlides">
+                <div class="numbertext"></div>
+                <img src="image/animals/animals12.JPG" 
+                    data-camera="Canon EOS RP"
+                    data-lens="RF 24-105mm F4-7.1 IS STM"
+                    data-focal="105mm"
+                    data-aperture="F7.1"
+                    data-shutter="1/250"
+                    data-location="Queen Elizabeth Park, Vancouver"
+                    
+                    data-date="2024/03/28"
+                    data-iso="6400">
+
+                <div class="caption"></div>
+            </div>
+          
+        </div>
+        </div>
+        <button onclick="plusSlides(1)" class="next"></button>
+    </div>
+
+    <div id="navigate">
+        <p id="description">
+            <span class="typewrite anim-typewrite js-typewrite"></span>
+        </p>
+    </div>
+
+    <footer class="copyright">
+        <p>&copy; 2025 Takumi Shiraishi. All Rights Reserved.</p>
+    </footer>
+
+    <audio id="btn_click">
+        <source src="button.mp3" type="audio/mp3">
+    </audio>
+
+    <!-- <audio id="menu_click">
+        <source src="Rizz Sound Effect.mp3" type="audio/mp3">
+    </audio> -->
+
+    <div id="container" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); z-index: 10000;">
+        <h2 style="font-family: 'Anonymous Pro', monospace;">Login</h2>
+        <input type="text" id="username" placeholder="Username" style="display: block; width: 100%; margin: 10px -10.5px; padding: 10px;">
+        <input type="password" id="pass" placeholder="Password" style="display: block; width: 100%; margin: 10px -10.5px; padding: 10px;">
+        <button onclick="login()" style="margin-top: 10px; padding: 10px 20px; background: black; color: white; font-family: 'Space Mono', monospace;">Login</button>
+        <button onclick="showRegister()" style="margin-top: 10px; padding: 10px 20px; background: gray; color: white; font-family: 'Space Mono', monospace;">Sign Up</button>
+        <button onclick="loginClose()" style="margin-top: 10px; padding: 10px 20px; background: transparent; color: black; border: none; font-family: 'Space Mono', monospace;">Close</button>
+    </div>
+
+
+    <script>
+        let i = 0;
+        const txt = 'Click Gallery to view my collection.';
+        const navigate = document.getElementById('description');
+
+        function typeWriter() {
+            if (i < txt.length) {
+                document.querySelector('.js-typewrite').textContent += txt.charAt(i);
+                i++;
+                setTimeout(typeWriter, 65);
+            }
+        }
+
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.scrollY;
+            const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = scrollPosition / maxScroll;
+
+            if (scrollPercent > 0.90 && i === 0) {
+                typeWriter();
+            } else if (scrollPercent > 0.90) {
+                navigate.style.backgroundColor = "rgba(0, 0, 0, 0.2)";
+            } else {
+                navigate.style.backgroundColor = "rgba(0, 0, 0, 0)";
+            }
+        });
+    </script>
+</body>
+</html>

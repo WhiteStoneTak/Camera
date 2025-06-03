@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+		<title>My Milestones - About Me</title>
+
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta name="referrer" content="strict-origin-when-cross-origin">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"> 
+
+        <link rel="stylesheet" href="dark_mode.css">
+		<link rel="stylesheet" href="MSstyle.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+
+        <link rel="icon" type="image/png" href="image/icon.png">
+
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        
+        <style>
+            .material-symbols-outlined {
+                font-variation-settings:
+                'FILL' 0,
+                'wght' 500,
+                'GRAD' 0,
+                'opsz' 20
+            }
+        </style>
+	</head>	
+	<body id="body">
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="index.html">Homepage</a>
+            <a href="info.html">About Me</a>
+            <a href="data_scientist.html">Data Scientist</a>
+            <a href="optica.html">Photography</a>
+        </div>
+        <header>
+            <div class="title">
+                <p id="page-title">My Milestones</p>
+            </div>
+            <span class="openbtn" onclick="openNav()">&#9776;</span>
+            <div class="controls">
+                <div class="toggle">
+                    <button id="toggle-mode" class="controls" onclick="toggleBtn()">
+                        <span class="material-symbols-outlined">dark_mode</span>
+                    </button>
+                </div>
+            </div>
+	    </header>
+	    
+	    <main id="main" style="overflow: hidden;">
+            <div class="row">
+                <div class="column">
+                    <img src="image/urban/urban8.JPG" alt="vancouver">
+                </div>
+                <div class="column"> 
+                    <h3> My story </h3>
+                    I am originally from Japan, and arrived to Canada during August 2023. I am very passionate about photography, and skiing. 
+                    I made this page to keep my memories and to look back in the future. 
+                    This page would help me when I am facing a challenge in my life, and looking back with my memory makes me happy.
+                    
+                    
+                    <h3> Approach I took for this website </h3>
+                    This page is very useful when it comes to my memories, and it has very clear information. 
+                    My approach with the accessibility should be simple and easy to read.
+                    
+                    <p><strong> I hope you enjoy this webpage! </strong></p>
+                </div>
+            </div>
+	    </main>
+	    <div id="footer"></div>
+	    <footer role="information" style="height: 400px">
+            <h2> Contact me </h2>
+            <div class="contact">
+                <div style="padding-bottom: 0; height: auto" class="contact_left">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d17033.799659841523!2d-122.91609966175828!3d49.2141155293474!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x548677db933a1e45%3A0xdc76693498347acd!2sNew%20Westminster%20Secondary%20School!5e0!3m2!1sen!2sca!4v1718658501962!5m2!1sen!2sca" style="border:0; width:100%" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <div style="padding-bottom: 0; height:auto" class="contact_right">
+                    Takumi Shiraishi <br>
+                    <table>
+                        <tr></tr>
+                        <tr>
+                            <td><span class="material-symbols-outlined"> location_on </span></td>
+                            <td> New Westminster Secondary School<br> 820 6th St, New Westminster, BC V3M 3S9</td>
+                        </tr>
+                        <tr></tr>
+                        <tr>
+                            <td><span class="material-symbols-outlined"> mail </span></td>
+                            <td> 2748590@newwestschools.ca </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+	    </footer>
+        <script src="MSscript.js"></script>
+	</body>
+    </html>

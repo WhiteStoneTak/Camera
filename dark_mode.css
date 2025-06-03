@@ -1,0 +1,105 @@
+.dark-mode body {
+    background-color: #474e5d;
+    color: whitesmoke;
+}
+
+.dark-mode .title {
+    color: whitesmoke;
+}
+
+.dark-mode header {
+    background-color: #333;
+}
+
+.dark-mode .content {
+    background-color: #444;
+    color: whitesmoke;
+}
+
+.dark-mode button {
+    background-color: #555;
+    color: whitesmoke;
+}
+
+.dark-mode .toggle {
+    background-color: #555;
+}
+
+.dark-mode .toggle:hover {
+    background-color: whitesmoke;
+}
+
+.dark-mode .toggle:hover span {
+    color: black;
+}
+
+.dark-mode .timeline::after {
+    background-color: gray;
+}
+
+.dark-mode .container::after {
+    background-color: gray;
+    border: 4px solid #FF9F55;
+}
+
+.dark-mode .left::before,
+.dark-mode .right::before {
+    content: " ";
+    height: 0;
+    position: absolute;
+    top: 22px;
+    width: 0;
+    z-index: 1;
+    border-style: solid;
+    border-width: 10px;
+}
+
+.dark-mode .left::before {
+    border-width: 10px 0 10px 10px !important;
+    border-color: transparent transparent transparent #333 !important;
+}
+
+.dark-mode .right::before {
+    border-width: 10px 10px 10px 0 !important;
+    border-color: transparent #333 transparent transparent !important;
+}
+
+
+.dark-mode .content {
+    background-color: #333;
+}
+    
+.dark-mode .container::before {
+    border: medium solid #333;
+    border-color: transparent #333 transparent transparent;
+}
+
+.dark-mode .column {
+    background-color: #333;
+    color: whitesmoke;
+}
+
+.dark-mode main {
+    color: whitesmoke;
+}
+
+.dark-mode footer {
+    background-color: #333;
+    color: whitesmoke;
+}
+
+.dark-mode .status-bar {
+    background-color: #555;
+}
+
+.dark-mode #scenario {
+    background-color: #555;
+}
+
+.dark-mode .demo-container {
+    background-color: #333;
+}
+
+.dark-mode .nav-menu {
+    background-color: #333;
+}
